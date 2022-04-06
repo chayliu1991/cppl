@@ -25,6 +25,9 @@ target_link_libraries(logstream_test cppl_base ${3rdLibs})
 add_executable(logstream_bench LogStream_bench.cpp)
 target_link_libraries(logstream_bench cppl_base)
 
+add_executable(async_logging_test AsyncLogging_test.cpp)
+target_link_libraries(async_logging_test cppl_base)
+
 add_executable(fork_test Fork_test.cpp)
 target_link_libraries(fork_test cppl_base)
 
