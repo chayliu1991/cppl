@@ -11,6 +11,12 @@ target_link_libraries(fileutil_test cppl_base)
 add_executable(logfile_test LogFile_test.cpp)
 target_link_libraries(logfile_test cppl_base)
 
+add_executable(logging_test Logging_test.cpp)
+target_link_libraries(logging_test cppl_base)
+
+add_executable(logstream_test LogStream_test.cpp)
+target_link_libraries(logstream_test cppl_base ${3rdLibs})
+
 add_executable(fork_test Fork_test.cpp)
 target_link_libraries(fork_test cppl_base)
 
@@ -25,4 +31,5 @@ target_link_libraries(timezone_test cppl_base)
 
 add_executable(singleton_test Singleton_test.cpp)
 target_link_libraries(singleton_test cppl_base)
+
 
