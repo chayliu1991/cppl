@@ -99,28 +99,6 @@ namespace cppl
 
     } // namespace detail
 
-    void CurrentThread::cacheTid()
-    {
-        if (t_cachedTid == 0)
-        {
-            t_cachedTid = CurrentThread::gettid();
-            t_tidStringLength = snprintf(t_tidString, sizeof t_tidString, "%5d ", t_cachedTid);
-        }
-    }
-
-    bool CurrentThread::isMainThread()
-    {
-        return tid() == ::getpid();
-    }
-
-    void CurrentThread::sleepUsec(int64_t usec)
-    {
-        struct timespec ts = {0, 0};
-        ts.tv_sec = static_cast<time_t>(usec / Timestamp::kMicroSecondsPerSecond);
-        ts.tv_nsec = static_cast<long>(usec % Timestamp::kMicroSecondsPerSecond * 1000);
-        ::nanosleep(&ts, NULL);
-    }
-
     AtomicInt32 Thread::numCreated_;
 
     Thread::Thread(ThreadFunc func, const string &n)
