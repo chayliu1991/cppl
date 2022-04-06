@@ -40,4 +40,11 @@ target_link_libraries(timezone_test cppl_base)
 add_executable(singleton_test Singleton_test.cpp)
 target_link_libraries(singleton_test cppl_base)
 
+add_executable(thread_test Thread_test.cpp)
+target_link_libraries(thread_test cppl_base)
 
+add_executable(thread_local_test ThreadLocal_test.cpp)
+target_link_libraries(thread_local_test cppl_base)
+
+add_executable(thread_local_singleton_test ThreadLocalSingleton_test.cpp)
+target_link_libraries(thread_local_singleton_test cppl_base)
