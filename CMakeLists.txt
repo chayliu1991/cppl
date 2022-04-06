@@ -27,6 +27,7 @@ set(3rdLibs libgtest_main.a libgtest.a libz.a)
 include_directories(${3rdIncDir})
 link_directories(${3rdLibDir})
 
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/base)
 
 add_subdirectory(base)
-# add_subdirectory(net)
+add_subdirectory(net)
