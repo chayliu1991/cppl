@@ -18,11 +18,7 @@ namespace cppl
 
             // return errno
             template <typename String>
-            int readToString(int maxSize,
-                             String *content,
-                             int64_t *fileSize,
-                             int64_t *modifyTime,
-                             int64_t *createTime);
+            int readToString(int maxSize, String *content, int64_t *fileSize, int64_t *modifyTime, int64_t *createTime);
 
             /// Read at maxium kBufferSize into buf_
             // return errno
@@ -40,12 +36,7 @@ namespace cppl
 
         // read the file content, returns errno if error happens.
         template <typename String>
-        int readFile(StringArg filename,
-                     int maxSize,
-                     String *content,
-                     int64_t *fileSize = NULL,
-                     int64_t *modifyTime = NULL,
-                     int64_t *createTime = NULL)
+        int readFile(StringArg filename, int maxSize, String *content, int64_t *fileSize = NULL, int64_t *modifyTime = NULL, int64_t *createTime = NULL)
         {
             ReadSmallFile file(filename);
             return file.readToString(maxSize, content, fileSize, modifyTime, createTime);
@@ -72,7 +63,5 @@ namespace cppl
             char buffer_[64 * 1024];
             off_t writtenBytes_;
         };
-
     }
-
 }
