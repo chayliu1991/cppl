@@ -12,18 +12,18 @@ namespace cppl
     class BoundedBlockingQueue : NonCopyable
     {
     public:
-        explicit BoundedBlockingQueue(int maxSize) : mutex_(), notEmpty_(mutex_), notFull_(mutex_), queue_(maxSize)
+        explicit BoundedBlockingQueue(size_t maxSize) : size_(maxSize), mutex_(), notEmpty_(mutex_), notFull_(mutex_)
         {
         }
 
         void put(const T &x)
         {
             MutexLockGuard lock(mutex_);
-            while (queue_.full())
+            while (is_full())
             {
                 notFull_.wait();
             }
-            assert(!queue_.full());
+            assert(!is_full.full());
             queue_.push_back(x);
             notEmpty_.notify();
         }
@@ -31,11 +31,11 @@ namespace cppl
         void put(T &&x)
         {
             MutexLockGuard lock(mutex_);
-            while (queue_.full())
+            while (is_full())
             {
                 notFull_.wait();
             }
-            assert(!queue_.full());
+            assert(!is_full());
             queue_.push_back(std::move(x));
             notEmpty_.notify();
         }
@@ -43,11 +43,11 @@ namespace cppl
         T take()
         {
             MutexLockGuard lock(mutex_);
-            while (queue_.empty())
+            while (is_empty())
             {
                 notEmpty_.wait();
             }
-            assert(!queue_.empty());
+            assert(!is_empty());
             T front(std::move(queue_.front()));
             queue_.pop_front();
             notFull_.notify();
@@ -57,13 +57,13 @@ namespace cppl
         bool empty() const
         {
             MutexLockGuard lock(mutex_);
-            return queue_.empty();
+            return is_empty();
         }
 
         bool full() const
         {
             MutexLockGuard lock(mutex_);
-            return queue_.full();
+            return is_full();
         }
 
         size_t size() const
@@ -79,6 +79,18 @@ namespace cppl
         }
 
     private:
+        bool is_full()
+        {
+            return queue_.size() >= size_;
+        }
+
+        bool is_empty()
+        {
+            return queue_.empty();
+        }
+
+    private:
+        size_t size_;
         mutable MutexLock mutex_;
         Condition notEmpty_;
         Condition notFull_;

@@ -48,3 +48,12 @@ target_link_libraries(thread_local_test cppl_base)
 
 add_executable(thread_local_singleton_test ThreadLocalSingleton_test.cpp)
 target_link_libraries(thread_local_singleton_test cppl_base)
+
+add_executable(thread_pool_test ThreadPool_test.cpp)
+target_link_libraries(thread_pool_test cppl_base)
+
+add_executable(blocking_queue_test BlockingQueue_test.cpp)
+target_link_libraries(blocking_queue_test cppl_base)
+
+add_executable(bounded_blocking_queue_test BoundedBlockingQueue_test.cpp)
+target_link_libraries(bounded_blocking_queue_test cppl_base)
