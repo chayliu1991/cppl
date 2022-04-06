@@ -3,6 +3,8 @@
 #include <cxxabi.h>
 #include <execinfo.h>
 #include <stdlib.h>
+#include <string>
+#include <utility>
 
 namespace cppl
 {
@@ -63,8 +65,7 @@ namespace cppl
         }
     }
 
-    Exception::Exception(const std::string &msg) : message_(std::move(msg)),
-                                                   stack_(detail::stackTrace(/*demangle=*/false))
+    Exception::Exception(const std::string &msg) : message_(std::move(msg)), stack_(detail::stackTrace(/*demangle=*/false))
     {
     }
 

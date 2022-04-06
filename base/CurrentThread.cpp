@@ -1,5 +1,6 @@
 #include "CurrentThread.h"
 
+#include <type_traits>
 namespace cppl
 {
     __thread int t_cachedTid = 0;

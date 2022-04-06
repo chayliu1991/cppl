@@ -1,35 +1,36 @@
-#pragma once
-#include <memory>
-#include <time.h>
+// #pragma once
 
-#include "Copyable.h"
+// #include <memory>
+// #include <time.h>
 
-namespace cppl
-{
-    class TimeZone : public Copyable
-    {
-    public:
-        explicit TimeZone(const char *zonefile);
-        TimeZone(int eastOfUtc, const char *tzname);
-        TimeZone() = default;
+// #include "Copyable.h"
 
-        bool valid() const
-        {
-            return static_cast<bool>(data_);
-        }
+// namespace cppl
+// {
+//     class TimeZone : public Copyable
+//     {
+//     public:
+//         struct Data;
 
-        struct tm toLocalTime(time_t secondsSinceEpoch) const;
-        time_t fromLocalTime(const struct tm &) const;
+//         explicit TimeZone(const char *zonefile);
+//         TimeZone(int eastOfUtc, const char *tzname);
+//         TimeZone() = default;
 
-        static struct tm toUtcTime(time_t secondsSinceEpoch, bool yday = false);
+//         bool valid() const
+//         {
+//             return static_cast<bool>(data_);
+//         }
 
-        static time_t fromUtcTime(const struct tm &);
+//         struct tm toLocalTime(time_t secondsSinceEpoch) const;
+//         time_t fromLocalTime(const struct tm &) const;
 
-        static time_t fromUtcTime(int year, int month, int day, int hour, int minute, int seconds);
+//         static struct tm toUtcTime(time_t secondsSinceEpoch, bool yday = false);
 
-        struct Data;
+//         static time_t fromUtcTime(const struct tm &);
 
-    private:
-        std::shared_ptr<Data> data_;
-    };
-}
+//         static time_t fromUtcTime(int year, int month, int day, int hour, int minute, int seconds);
+
+//     private:
+//         std::shared_ptr<Data> data_;
+//     };
+// }

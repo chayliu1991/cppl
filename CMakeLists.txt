@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.6)
 
 project(muduo LANGUAGES C CXX VERSION 1.0.0)
 
-set(CXX_FLAGS -DCHECK_PTHREAD_RETURN_VALUE -D_FILE_OFFSET_BITS=64 -Wall -Wextra -Werror -march=native -std=c++11 -rdynamic)
+set(CMAKE_CXX_FLAGS "-DCHECK_PTHREAD_RETURN_VALUE -D_FILE_OFFSET_BITS=64 -Wall -Wextra -Werror -march=native -std=c++11 -rdynamic")
 
 
 

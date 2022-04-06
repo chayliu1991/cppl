@@ -128,5 +128,5 @@ namespace cppl
         }
     };
 
-    std::ostream &operator<<(std::ostream &o, const muduo::StringPiece &piece);
+    std::ostream &operator<<(std::ostream &o, const cppl::StringPiece &piece);
 }

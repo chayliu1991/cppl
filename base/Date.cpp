@@ -1,17 +1,18 @@
 #include "Date.h"
 
+#include <stdint.h>
 #include <stdio.h>
 #include <time.h>
+#include <type_traits>
 
 namespace cppl
 {
     namespace detail
     {
-        char require_32_bit_integer_at_least[sizeof(int) >= sizeof(int32_t) ? 1 : -1];
+        static_assert(sizeof(int) >= sizeof(int32_t), "int type should be greater equal than int32_t");
 
         int getJulianDayNumber(int year, int month, int day)
         {
-            (void)require_32_bit_integer_at_least;
             int a = (14 - month) / 12;
             int y = year + 4800 - a;
             int m = month + 12 * a - 3;
