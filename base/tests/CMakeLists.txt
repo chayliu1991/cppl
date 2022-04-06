@@ -17,4 +17,12 @@ target_link_libraries(fork_test cppl_base)
 add_executable(exception_test Exception_test.cpp)
 target_link_libraries(exception_test cppl_base)
 
+add_executable(timestamp_test Timestamp_test.cpp)
+target_link_libraries(timestamp_test cppl_base)
+
+add_executable(timezone_test TimeZone_test.cpp)
+target_link_libraries(timezone_test cppl_base)
+
+add_executable(singleton_test Singleton_test.cpp)
+target_link_libraries(singleton_test cppl_base)
 
