@@ -1,6 +1,11 @@
 add_executable(atomic_test Atomic_test.cpp)
 target_link_libraries(atomic_test cppl_base ${3rdLibs})
 
+add_executable(mutex_test Mutex_test.cpp)
+target_link_libraries(mutex_test cppl_base)
+
+add_executable(process_info_test ProcessInfo_test.cpp)
+target_link_libraries(process_info_test cppl_base)
 
 add_executable(date_test Date_test.cpp)
 target_link_libraries(date_test cppl_base ${3rdLibs})
