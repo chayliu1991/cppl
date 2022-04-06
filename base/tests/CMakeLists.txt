@@ -65,3 +65,5 @@ add_executable(bounded_blocking_queue_test BoundedBlockingQueue_test.cpp)
 target_link_libraries(bounded_blocking_queue_test cppl_base)
 
 
+add_executable(gzip_file_test GzipFile_test.cpp)
+target_link_libraries(gzip_file_test cppl_base ${3rdLibs})

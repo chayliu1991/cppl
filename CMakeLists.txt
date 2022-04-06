@@ -16,9 +16,13 @@ set(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/bin)
 set(LIBRARY_OUTPUT_PATH ${PROJECT_BINARY_DIR}/lib)
 
 
-set(3rdIncDir ${CMAKE_CURRENT_SOURCE_DIR}/3rd/googletest/inc/)
-set(3rdLibDir ${CMAKE_CURRENT_SOURCE_DIR}/3rd/googletest/lib/)
-set(3rdLibs libgtest_main.a libgtest.a)
+set(3rdIncDir ${CMAKE_CURRENT_SOURCE_DIR}/3rd/googletest/inc/
+              ${CMAKE_CURRENT_SOURCE_DIR}/3rd/zlib/inc/)
+
+set(3rdLibDir ${CMAKE_CURRENT_SOURCE_DIR}/3rd/googletest/lib/
+              ${CMAKE_CURRENT_SOURCE_DIR}/3rd/zlib/lib/)
+
+set(3rdLibs libgtest_main.a libgtest.a libz.a)
 
 include_directories(${3rdIncDir})
 link_directories(${3rdLibDir})
