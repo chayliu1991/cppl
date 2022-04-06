@@ -37,6 +37,8 @@ namespace cppl
 
         bool isMainThread();
 
+        pid_t gettid();
+
         void sleepUsec(int64_t usec);
 
         string stackTrace(bool demangle);
