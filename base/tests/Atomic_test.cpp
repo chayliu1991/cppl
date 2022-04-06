@@ -41,8 +41,8 @@ TEST(AtomicTest, AtomicInt32)
     EXPECT_EQ(100, a0.get());
 }
 
-int main()
+int main(int argc, char **argv)
 {
-    InitGoogleTest();
+    InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();
 }

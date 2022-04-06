@@ -2,6 +2,10 @@
 #include <assert.h>
 #include <stdio.h>
 
+#include "gtest/gtest.h"
+
+using ::testing::InitGoogleTest;
+
 using cppl::Date;
 
 const int kMonthsOfYear = 12;
@@ -38,7 +42,41 @@ void passByValue(Date x)
     printf("%s\n", x.toIsoString().c_str());
 }
 
-int main()
+TEST(DateTest, julianDayNumber)
+{
+    int julianDayNumber = 2415021;
+    int weekDay = 1; // Monday
+
+    for (int year = 1900; year < 2500; ++year)
+    {
+        ASSERT_EQ(Date(year, 3, 1).julianDayNumber() - Date(year, 2, 29).julianDayNumber(), isLeapYear(year));
+
+        for (int month = 1; month <= kMonthsOfYear; ++month)
+        {
+            for (int day = 1; day <= daysOfMonth(year, month); ++day)
+            {
+                Date d(year, month, day);
+                ASSERT_EQ(year, d.year());
+                ASSERT_EQ(month, d.month());
+                ASSERT_EQ(day, d.day());
+                ASSERT_EQ(weekDay, d.weekDay());
+                ASSERT_EQ(julianDayNumber, d.julianDayNumber());
+
+                Date d2(julianDayNumber);
+                ASSERT_EQ(year, d2.year());
+                ASSERT_EQ(month, d2.month());
+                ASSERT_EQ(day, d2.day());
+                ASSERT_EQ(weekDay, d2.weekDay());
+                ASSERT_EQ(julianDayNumber, d2.julianDayNumber());
+
+                ++julianDayNumber;
+                weekDay = (weekDay + 1) % 7;
+            }
+        }
+    }
+}
+
+int main(int argc, char **argv)
 {
     time_t now = time(NULL);
     struct tm t1 = *gmtime(&now);
@@ -52,35 +90,6 @@ int main()
     Date todayLocal(t2);
     printf("%s\n", todayLocal.toIsoString().c_str());
 
-    int julianDayNumber = 2415021;
-    int weekDay = 1; // Monday
-
-    for (int year = 1900; year < 2500; ++year)
-    {
-        assert(Date(year, 3, 1).julianDayNumber() - Date(year, 2, 29).julianDayNumber() == isLeapYear(year));
-        for (int month = 1; month <= kMonthsOfYear; ++month)
-        {
-            for (int day = 1; day <= daysOfMonth(year, month); ++day)
-            {
-                Date d(year, month, day);
-                // printf("%s %d\n", d.toString().c_str(), d.weekDay());
-                assert(year == d.year());
-                assert(month == d.month());
-                assert(day == d.day());
-                assert(weekDay == d.weekDay());
-                assert(julianDayNumber == d.julianDayNumber());
-
-                Date d2(julianDayNumber);
-                assert(year == d2.year());
-                assert(month == d2.month());
-                assert(day == d2.day());
-                assert(weekDay == d2.weekDay());
-                assert(julianDayNumber == d2.julianDayNumber());
-
-                ++julianDayNumber;
-                weekDay = (weekDay + 1) % 7;
-            }
-        }
-    }
-    printf("All passed.\n");
+    InitGoogleTest(&argc, argv);
+    return RUN_ALL_TESTS();
 }
