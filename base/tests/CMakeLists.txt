@@ -14,3 +14,7 @@ target_link_libraries(logfile_test cppl_base)
 add_executable(fork_test Fork_test.cpp)
 target_link_libraries(fork_test cppl_base)
 
+add_executable(exception_test Exception_test.cpp)
+target_link_libraries(exception_test cppl_base)
+
+

@@ -41,6 +41,7 @@ namespace cppl
 
         void sleepUsec(int64_t usec);
 
-        string stackTrace(bool demangle);
+        std::string stackTrace(bool demangle = false);
+
     }
 }
