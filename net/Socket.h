@@ -2,6 +2,8 @@
 
 #include "NonCopyable.h"
 
+#include <netinet/tcp.h>
+
 namespace cppl
 {
     namespace net

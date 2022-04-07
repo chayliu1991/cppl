@@ -27,13 +27,11 @@ namespace cppl
 
             /// Constructs an endpoint with given struct @c sockaddr_in
             /// Mostly used when accepting new connections
-            explicit InetAddress(const struct sockaddr_in &addr)
-                : addr_(addr)
+            explicit InetAddress(const struct sockaddr_in &addr) : addr_(addr)
             {
             }
 
-            explicit InetAddress(const struct sockaddr_in6 &addr)
-                : addr6_(addr)
+            explicit InetAddress(const struct sockaddr_in6 &addr) : addr6_(addr)
             {
             }
 
