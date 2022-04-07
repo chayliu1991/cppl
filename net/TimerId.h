@@ -8,7 +8,7 @@ namespace cppl
     {
         class Timer;
 
-        class TimerId : public muduo::Copyable
+        class TimerId : public cppl::Copyable
         {
         public:
             TimerId() : timer_(NULL), sequence_(0)
