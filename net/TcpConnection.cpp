@@ -14,7 +14,7 @@ namespace cppl
 {
     namespace net
     {
-        void cppl::net::defaultConnectionCallback(const TcpConnectionPtr &conn)
+        void defaultConnectionCallback(const TcpConnectionPtr &conn)
         {
             LOG_TRACE << conn->localAddress().toIpPort() << " -> "
                       << conn->peerAddress().toIpPort() << " is "
@@ -22,7 +22,7 @@ namespace cppl
             // do not call conn->forceClose(), because some users want to register message callback only.
         }
 
-        void cppl::net::defaultMessageCallback(const TcpConnectionPtr &, Buffer *buf, Timestamp)
+        void defaultMessageCallback(const TcpConnectionPtr &, Buffer *buf, Timestamp)
         {
             buf->retrieveAll();
         }

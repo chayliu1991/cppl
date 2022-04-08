@@ -1,7 +1,13 @@
 include(CheckSymbolExists)
 
 
-aux_source_directory(. NetSrc)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR})
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/poller/)
+
+
+aux_source_directory(${CMAKE_CURRENT_SOURCE_DIR}  NetSrc)
+aux_source_directory(${CMAKE_CURRENT_SOURCE_DIR}/poller  NetSrc)
+
 
 
 check_symbol_exists(accept4 "sys/socket.h" HAVE_ACCEPT4)
