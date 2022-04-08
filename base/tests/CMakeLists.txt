@@ -1,3 +1,6 @@
+
+set(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/bin/base/)
+
 add_executable(atomic_test Atomic_test.cpp)
 target_link_libraries(atomic_test cppl_base ${3rdLibs})
 
@@ -67,5 +70,5 @@ target_link_libraries(bounded_blocking_queue_test cppl_base)
 add_executable(gzip_file_test GzipFile_test.cpp)
 target_link_libraries(gzip_file_test cppl_base ${3rdLibs})
 
-add_executable(any_test Any_test.cpp)
-target_link_libraries(any_test cppl_base ${3rdLibs})
+
+

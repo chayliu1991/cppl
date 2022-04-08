@@ -39,4 +39,4 @@ link_directories(${3rdLibDir} ${BoostLibDir})
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/base)
 
 add_subdirectory(base)
-# add_subdirectory(net)
+add_subdirectory(net)

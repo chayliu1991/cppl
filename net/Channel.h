@@ -18,7 +18,7 @@ namespace cppl
         /// This class doesn't own the file descriptor.
         /// The file descriptor could be a socket,
         /// an eventfd, a timerfd, or a signalfd
-        class Channel : noncopyable
+        class Channel : NonCopyable
         {
         public:
             typedef std::function<void()> EventCallback;

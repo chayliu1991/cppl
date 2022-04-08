@@ -4,6 +4,8 @@
 #include <functional>
 #include <vector>
 
+#include <boost/any.hpp>
+
 #include "Callbacks.h"
 #include "CurrentThread.h"
 #include "Mutex.h"
@@ -149,7 +151,7 @@ namespace cppl
             Channel *currentActiveChannel_;
 
             mutable MutexLock mutex_;
-            std::vector<Functor> pendingFunctors_ GUARDED_BY(mutex_);
+            std::vector<Functor> pendingFunctors_;
         };
 
     }
